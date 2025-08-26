@@ -1,6 +1,7 @@
 let listaDeNumeros = [];
-let limiteDeSorteios = 10
+let limiteDeSorteios = 100
 
+// Gera um número aleatório entre 1 e variável limiteDeSorteios
 const gerarNumeroAleatorio = () => {
     let numeroEscolhido = parseInt(Math.random() * limiteDeSorteios) + 1;
     let quantidadeDeNumeros = listaDeNumeros.length;
@@ -18,16 +19,12 @@ const gerarNumeroAleatorio = () => {
     }
 }
 
+// Variáveis número secreto e tentativas, exibe no console para testes
 let tentativas = 1;
 let numeroSecreto = gerarNumeroAleatorio();
 console.log(numeroSecreto);
 
-// let titulo = document.querySelector('h1');
-// titulo.innerHTML = 'Jogo do número secreto';
-
-// let paragrafo = document.querySelector('p');
-// paragrafo.innerHTML = 'Descubra um número secreto entre 1 e 100';
-
+// Função para exibir textos na tela e falar o texto
 const exibirTexto = (tag, texto) => {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
@@ -35,9 +32,7 @@ const exibirTexto = (tag, texto) => {
     { rate: 1.2 });
 }
 
-// exibirTexto('h1', 'Jogo do número secreto');
-// exibirTexto('p', `Descubra um número secreto entre 1 e ${limiteDeSorteios}`);
-
+// Exibe a mensagem inicial do jogo
 const exibirMsgInicial = () => {
     exibirTexto('h1', 'Jogo do número secreto');
     exibirTexto('p', `Descubra um número secreto entre 1 e ${limiteDeSorteios}`);
@@ -45,9 +40,9 @@ const exibirMsgInicial = () => {
 
 exibirMsgInicial();
 
+// Função para verificar o chute do usuário
 const verificarChute = () => {
     let chute = document.querySelector('input').value;
-
     if (chute == numeroSecreto) {
         exibirTexto('h1', 'Você acertou!');
         let palavraTentativas = tentativas == 1 ? 'tentativa' : 'tentativas';
@@ -69,11 +64,13 @@ const verificarChute = () => {
     }
 }
 
+// Função para limpar o campo de input
 const limparcampo = () => {
     let campo = document.querySelector('input');
     campo.value = '';
 }
 
+// Função para reiniciar o jogo
 const reiniciargame = () => {
     numeroSecreto = gerarNumeroAleatorio();
     console.log(numeroSecreto);
